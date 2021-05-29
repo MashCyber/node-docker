@@ -21,8 +21,6 @@ services:
             - mongo-db-storage:/data/db
     redis:
         image: redis
-        
-
 
 volumes: 
     mongo-db-storage:
