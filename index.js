@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors')
-const morgan = require('morgan')
+// const morgan = require('morgan')
 const mongoose = require('mongoose');
 const redis = require('redis')
 const session = require('express-session')
@@ -14,7 +14,7 @@ const userRouter = require('./routes/userRoutes')
 
 //Middlewares
 app.use(express.json());
-app.use(morgan('tiny'));
+// app.use(morgan('tiny'));
 app.enable("trust proxy");
 app.use(cors());
 
