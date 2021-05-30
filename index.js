@@ -66,6 +66,7 @@ app.use(
         <h3>Twitter: @mashcyber</h3>
         <h3>Instagram: @just_tito</h3>
         <h3>LinkedIn: Titus Muthie.</h3>
+        <hr>
       `)
   })
 
