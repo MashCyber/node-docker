@@ -58,9 +58,11 @@ app.use(
 
   app.get('/api/v1/',(req,res)=>{
       res.status(200).send(`
-        <h1>Eng.Titus Macharia Muthie!!</h1>
-        <h2>BIO: Commited | Hardworking| Result Driven</h2>
-        <h2>Devops|IT|Cloud</h2>
+        <h1>Eng.Titus Muthie!!</h1>
+        <hr>
+        <h2>Bio: Commited | Hardworking | Result Driven</h2>
+        <h2>Devops | IT | Cloud Servers </h2>
+        <hr>
         <h3>Twitter: @mashcyber</h3>
         <h3>Instagram: @just_tito</h3>
         <h3>LinkedIn: Titus Muthie.</h3>
