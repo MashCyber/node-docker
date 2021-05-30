@@ -13,6 +13,7 @@ services:
             - PORT=3000
         depends_on: 
             - mongodb
+            - nginx
     mongodb:
         image: mongo
         environment:
