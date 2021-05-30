@@ -54,23 +54,23 @@ exports.login = async (req,res,next) =>{
 }
 
 
-// exports.logout = (req,res,next) =>{
-//     try {
-//         if(!req.session.user){
-//             return res.status(200).json({
-//                 status:"Not Found",
-//                 message:"User Not Logged In"   
-//              })
-//         }res.status(200).json({
-//             status:"success",
-//             message:"User logged out"
-//         })
-//             req.session.user=null;
-//             console.log(req)
-//         } catch (error) {
-//             console.log(error)
-//              res.status(400).json({
-//                 status:"Error"
-//             })
-//     }
-// }
+exports.logout = (req,res,next) =>{
+   try {
+       if(req.session.user){
+           req.session.user = null
+           return res.status(200).json({
+               status:"Success",
+               message:"Logged out!"
+           })
+       }
+       res.status(400).json({
+           status:"Error",
+           message:"User not logged in!"
+       })
+   } catch (e) {
+    console.log(e);
+    res.status(400).json({
+        status:"Error"
+    })
+   }
+}
