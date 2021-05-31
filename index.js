@@ -25,6 +25,20 @@ let redisClient = redis.createClient({
     port: REDIS_PORT
 })
 
+app.use(
+  session({
+    store: new RedisStore({ client: redisClient }),
+    secret: SESSION_SECRET,
+    cookie:{
+      saveUninitialized: false,
+      resave: false,
+      secure:false,
+      httpOnly:true,
+      maxAge: 300000
+    }
+  })
+)
+
 const connectWithRetry = () =>{
     mongoose
     .connect(`${mongoURL}`,{useNewUrlParser: true, useUnifiedTopology: true})
@@ -41,20 +55,6 @@ const connectWithRetry = () =>{
 };
 
 connectWithRetry();
-
-app.use(
-    session({
-      store: new RedisStore({ client: redisClient }),
-      secret: SESSION_SECRET,
-      cookie:{
-        saveUninitialized: false,
-        resave: false,
-        secure:false,
-        httpOnly:true,
-        maxAge: 300000
-      }
-    })
-  )
 
   app.get('/api/v1/',(req,res)=>{
       res.status(200).send(`
