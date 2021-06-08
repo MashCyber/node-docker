@@ -1,4 +1,4 @@
-version: "3"
+version: "3.1"
 services:
     nginx:
         ports:
@@ -18,11 +18,20 @@ services:
                 NODE_ENV: production
         environment: 
             NODE_ENV: production
-            MONGO_USER: ${MONGO_USER}
-            MONGO_PASSWORD: ${MONGO_PASSWORD}
-            SESSION_SECRET: ${SESSION_SECRET}
+            MONGO_USER: mongo-user
+            MONGO_PASSWORD: mongo-pass
+            SESSION_SECRET: "mysecret"
         command: node index.js
     mongodb:
         environment: 
-            MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+            MONGO_INITDB_ROOT_USERNAME: /run/secrets/mongo-user
+            MONGO_INITDB_ROOT_PASSWORD: /run/secrets/mongo-pass
+        secrets:
+            - mongo-user
+            - mongo-pass
+
+secrets:
+    mongo-user:
+       file: ./mongo-user.txt
+    mongo-pass:
+        file: ./mongo-pass.txt

@@ -1,5 +1,4 @@
 const Post = require('../models/postModels')
-const { post } = require('../routes/postRoutes')
 
 //localhost:3000/posts
 exports.getAllPosts = async (req,res,next) =>{

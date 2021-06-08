@@ -50,9 +50,8 @@ const connectWithRetry = () =>{
     .catch((e) => {
         console.log(`Error:`,e)
         setTimeout(connectWithRetry,5000)
-        console.log('==================================')
     })
-};
+}
 
 connectWithRetry();
 
